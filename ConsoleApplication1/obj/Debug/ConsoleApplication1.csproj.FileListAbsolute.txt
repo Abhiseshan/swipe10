@@ -1,0 +1,13 @@
+c:\users\hp\documents\visual studio 2015\Projects\ConsoleApplication1\ConsoleApplication1\bin\Debug\ConsoleApplication1.exe.config
+C:\Users\hp\documents\visual studio 2015\Projects\ConsoleApplication1\ConsoleApplication1\obj\Debug\Interop.SYNCTRLLib.dll
+C:\Users\hp\documents\visual studio 2015\Projects\ConsoleApplication1\ConsoleApplication1\obj\Debug\ConsoleApplication1.csproj.ResolveComReference.cache
+C:\Users\hp\documents\visual studio 2015\Projects\ConsoleApplication1\ConsoleApplication1\bin\Debug\ConsoleApplication1.exe
+C:\Users\hp\documents\visual studio 2015\Projects\ConsoleApplication1\ConsoleApplication1\bin\Debug\ConsoleApplication1.pdb
+C:\Users\hp\documents\visual studio 2015\Projects\ConsoleApplication1\ConsoleApplication1\obj\Debug\ConsoleApplication1.exe
+C:\Users\hp\documents\visual studio 2015\Projects\ConsoleApplication1\ConsoleApplication1\obj\Debug\ConsoleApplication1.pdb
+C:\Users\hp\documents\visual studio 2015\Projects\ConsoleApplication1\ConsoleApplication1\obj\Debug\Interop.SYNCOMLib.dll
+C:\Users\hp\documents\visual studio 2015\Projects\ConsoleApplication1\ConsoleApplication1\obj\Debug\ConsoleApplication1.csprojResolveAssemblyReference.cache
+C:\Users\hp\documents\visual studio 2015\Projects\ConsoleApplication1\ConsoleApplication1\bin\Debug\WindowsInput.dll
+C:\Users\hp\documents\visual studio 2015\Projects\ConsoleApplication1\ConsoleApplication1\bin\Debug\WindowsInput.xml
+C:\Users\hp\documents\visual studio 2015\Projects\ConsoleApplication1\ConsoleApplication1\bin\Debug\VirtualDesktop.dll
+C:\Users\hp\documents\visual studio 2015\Projects\ConsoleApplication1\ConsoleApplication1\bin\Debug\VirtualDesktop.pdb
