@@ -17,6 +17,7 @@ Swipe 10 interfaces with the existing trackpad driver to get the number of finge
 **Open and Close Task View**
 
 3 finger vertical swipes are used to open the task view and to minimise all windows and show the desktop.
+
 ![Sample](https://github.com/Abhiseshan/swipe10/blob/gh-pages/assets/img/updown.gif)
 
 **Switch between Desktops**
