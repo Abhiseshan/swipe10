@@ -86,8 +86,8 @@ namespace ConsoleApplication1
                 maxX = SynTP_Dev.GetLongProperty(SynDeviceProperty.SP_XHiSensor);
                 minX = SynTP_Dev.GetLongProperty(SynDeviceProperty.SP_XLoSensor);
 
-                minLengthY = (maxY - minY) - (maxY - ActivationUp) - (ActivationDown - minY) - 1500;
-                minLengthX = (maxX - minX) - (maxX - ActivationRight) - (ActivationLeft - minX) - 2500;
+                minLengthY = (maxY - minY) - (maxY - ActivationUp) - (ActivationDown - minY) - 1000;
+                minLengthX = (maxX - minX) - (maxX - ActivationRight) - (ActivationLeft - minX) - 2000;
 
                 int mid = (maxY - minY)/2;
                 ySwipeMax = (maxY - mid);
@@ -145,7 +145,7 @@ namespace ConsoleApplication1
                 if (isValidGesture(SynTP_Pack.GetLongProperty(SynPacketProperty.SP_ExtraFingerState)) && ydelta > 0)
                 {
                     if (y >= ActivationUp)
-                        executeUp();
+                        executeUp(1);
                     else
                         staticy += ydelta;
                 }
@@ -165,7 +165,7 @@ namespace ConsoleApplication1
                         executeDown();
                     }
                     else if (staticy >= minLengthY)
-                        executeUp();
+                        executeUp(2);
                     staticy = 0;
                 }
 
@@ -173,19 +173,19 @@ namespace ConsoleApplication1
                 xdelta = SynTP_Pack.GetLongProperty(SynPacketProperty.SP_XDelta);
                 x = SynTP_Pack.GetLongProperty(SynPacketProperty.SP_X);
 
-                if (isValidGestureRL(SynTP_Pack.GetLongProperty(SynPacketProperty.SP_ExtraFingerState)) && xdelta > 0)
+                if (isValidGesture(SynTP_Pack.GetLongProperty(SynPacketProperty.SP_ExtraFingerState)) && xdelta > 0)
                 {
                     if (x >= ActivationUp && staticx >= minLengthX)
-                        executeRight();
+                        executeLeft();
                     else
                         staticx += xdelta;
                 }
 
-                else if (isValidGestureRL(SynTP_Pack.GetLongProperty(SynPacketProperty.SP_ExtraFingerState)) && xdelta < 0)
+                else if (isValidGesture(SynTP_Pack.GetLongProperty(SynPacketProperty.SP_ExtraFingerState)) && xdelta < 0)
                 {
                     if (x <= ActivationDown && -staticx >= minLengthX)
                     {
-                        executeLeft();
+                        executeRight();
                     }
                     else staticx += xdelta;
                 }
@@ -194,10 +194,10 @@ namespace ConsoleApplication1
                 {
                     if (-staticx >= minLengthX)
                     {
-                        executeLeft();
+                        executeRight();
                     }
                     else if (staticx >= minLengthX)
-                        executeRight();
+                        executeLeft();
                     staticx = 0;
                 }
                  
@@ -221,15 +221,16 @@ namespace ConsoleApplication1
             GC.WaitForPendingFinalizers();
         }
 
-        void executeUp()
+        void executeUp(int area)
         {
+            Console.WriteLine("up: " + area);
             if (!isUpActive) {
                 isUpActive = true;
                 WindowsInput.InputSimulator kb = new WindowsInput.InputSimulator();
                 kb.Keyboard.ModifiedKeyStroke(VirtualKeyCode.LWIN, VirtualKeyCode.TAB);
             }
 
-
+                
             //vdm.GetWindowDesktopId
             //var desktop = VirtualDesktop.FromHwnd();
             //IntPtr handle = Process.GetCurrentProcess().MainWindowHandle;
@@ -269,7 +270,9 @@ namespace ConsoleApplication1
             //Console.WriteLine("ELFT");
             //desktop = desktop.GetLeft();
             //if (desktop != null)
-                //desktop.Switch();
+            //desktop.Switch();
+
+            staticx = 0;
         }
 
         void executeRight()
@@ -280,6 +283,8 @@ namespace ConsoleApplication1
             WindowsInput.InputSimulator kb = new WindowsInput.InputSimulator();
             kb.Keyboard.ModifiedKeyStroke(Modify, VirtualKeyCode.RIGHT);
             //Console.WriteLine("RIGHT");
+
+            staticx = 0;
         }
 
         bool isValidGesture(int finger)
@@ -291,7 +296,7 @@ namespace ConsoleApplication1
 
         bool isValidGestureRL(int finger)
         {
-            if (finger == 3 || finger == 771)
+            if (finger == 3 || finger == 771 || finger == 514)
                 return true;
             else return false;
         }
